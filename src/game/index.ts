@@ -1,7 +1,16 @@
-import createWorld from "./World.ts";
+import createWorld from "./World";
+
+import {$l} from "../utils/dev"
 
 // Create a World instance
 const World = createWorld();
 
 // Call createUser from the World instance
-World.createUser();
+const user = World.createUser();
+
+$l({user})
+
+const scene = World.createScene();
+$l({scene})
+
+

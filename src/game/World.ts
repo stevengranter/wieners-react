@@ -1,19 +1,20 @@
-export default function createWorld() {
-    let instance: { createUser: () => void } | null = null;
+import User from "./User.ts";
+import createScene from "./Scene.ts";
 
-    function createInstance() {
-        return {
-            createUser: function() {
-                console.log("Creating a user in World");
-            }
-        }
-    }
+let instance: { createUser: () => void, createScene: () => void } | null = null;
 
+function World() {
     if (!instance) {
-        instance = createInstance();
+        instance = {
+            createUser: User,
+            createScene
+        };
     } else {
         throw new Error("World already exists, use existing world instance");
     }
 
     return instance;
 }
+
+const createWorld = World
+export default createWorld
