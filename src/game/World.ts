@@ -1,7 +1,7 @@
 import User from "./User.ts";
 import createScene from "./Scene.ts";
 
-let instance: { createUser: () => void, createScene: () => void } | null = null;
+let instance: { createUser: () => {id:string,x:number,y:number,width:number,height:number}, createScene: () => void } | null = null;
 
 function World() {
     if (!instance) {
