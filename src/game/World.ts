@@ -1,4 +1,4 @@
-import User from "./User.ts";
+import createUser from "./User.ts";
 import createScene from "./Scene.ts";
 
 let instance: { createUser: () => {id:string,x:number,y:number,width:number,height:number}, createScene: () => void } | null = null;
@@ -6,7 +6,7 @@ let instance: { createUser: () => {id:string,x:number,y:number,width:number,heig
 function World() {
     if (!instance) {
         instance = {
-            createUser: User,
+            createUser,
             createScene
         };
     } else {

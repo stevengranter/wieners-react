@@ -12,4 +12,4 @@ function User(position=[0,0], width=64, height=64): {x:number, y:number, id: str
     }
 
     const createUser = User
-export default createUser
+    export default createUser
