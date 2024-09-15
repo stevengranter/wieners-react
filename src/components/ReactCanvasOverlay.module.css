@@ -1,12 +1,16 @@
 #canvas-overlay {
     width:640px;
     height: 480px;
+    contain:strict;
     position:absolute;
     display:flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0,255,0,0.5);
     color: white;
+}
+
+#canvas-overlay img {
+    max-height:100%
 }
 
 

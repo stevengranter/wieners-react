@@ -11,29 +11,57 @@
 // * Time management
 // * WorldUser interaction
 
-import createScene from "./WorldScene.ts";
-import createActor from "./WorldActor.ts";
-
-import Actor from "./WorldActor.ts";
-import Scene from "./WorldScene.ts";
+import WorldScene from "./WorldScene.ts";
+import WorldActor from "./WorldActor.ts";
 
 type World = {
-  createActor: typeof Actor;
-  createScene: typeof Scene;
+  createActor: () => WorldActor;
+  createScene: () => WorldScene;
+  getScenes: () => WorldScene[];
+  getActors: () => WorldActor[];
 };
 
 let instance: World | null = null;
 
 function World(): World {
+  const scenes: WorldScene[] = [];
+  const actors: WorldActor[] = [];
+
   if (!instance) {
     instance = {
       createScene,
+      getScenes,
       createActor,
+      getActors,
     };
   } else {
     throw new Error("World already exists, use existing world instance");
   }
 
+  function createScene(config = null) {
+    const sceneInstance: WorldScene = WorldScene(config);
+    scenes.push(sceneInstance);
+    return sceneInstance;
+  }
+
+  function getScenes() {
+    if (scenes) return scenes;
+    else return [];
+  }
+
+  function createActor(config = null) {
+    const actorInstance = WorldActor(config);
+    actors.push(actorInstance);
+    return actorInstance;
+  }
+
+  function getActors() {
+    if (actors) return actors;
+    else return [];
+  }
+
+  console.log("%c🌎 Created World: ", "color:green");
+  console.log(`   World: %o`, instance);
   return instance;
 }
 

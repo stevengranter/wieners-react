@@ -1,31 +1,35 @@
-// TitleScreen.tsx
+// ReactCanvasOverlay.tsx
 
 import styles from "./ReactCanvasOverlay.module.css";
 
-import { useEffect } from "react";
-import { useGame } from "../context/Game.tsx";
+import { PropsWithChildren, useEffect } from "react";
+import { useGame } from "../context/GameContext.ts";
 
-function ReactCanvasOverlay() {
+let didInit = false;
+function ReactCanvasOverlay({ children }: PropsWithChildren) {
   const game = useGame();
-  console.log(game);
-
+  // const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
   // const handleGameOver = () => {
   //   console.log("Game Over!");
   // };
 
   useEffect(() => {
-    if (game) {
-      const { ctx, renderCanvas } = game;
-      console.log("This is TitleScreen");
-      renderCanvas(ctx);
-    } else {
-      console.warn("Waiting on game context...");
+    if (!didInit) {
+      if (game) {
+        const { ctx, renderCanvas } = game;
+        setContext(ctx);
+        console.log("Canvas context initialized");
+        renderCanvas(ctx);
+        didInit = true;
+      } else {
+        console.log("Waiting on canvas context2D...");
+      }
     }
   }, [game]);
 
   return (
     <div id={styles["canvas-overlay"]}>
-      <h1>React Canvas Overlay</h1>
+      {children ? <>{children}</> : <p>#canvas-overlay is empty</p>}
     </div>
   );
 }

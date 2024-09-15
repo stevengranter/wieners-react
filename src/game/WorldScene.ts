@@ -3,18 +3,20 @@ type WorldScene = {
   layers: Layers[];
 };
 
+type WorldSceneConfig = {
+  layers?: Layers[];
+};
+
 type Layers = {
   src: string;
 };
 
-function Scene(): WorldScene {
+function WorldScene(sceneCfg: WorldSceneConfig | null = null): WorldScene {
   const layers: [] = [];
-  console.log("Creating a WorldScene in World");
-  return {
-    id: crypto.randomUUID(),
-    layers,
-  };
+  const scene = { id: crypto.randomUUID(), layers, ...sceneCfg };
+  console.log("%c🎬 Created a Scene in World: ", "color:green");
+  console.log(`   Scene: %o`, scene);
+  return scene;
 }
 
-const createScene = Scene;
-export default createScene;
+export default WorldScene;
