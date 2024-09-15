@@ -1,39 +1,24 @@
-import { ReactNode, useEffect, useRef, useState } from "react";
+import React, { ReactNode, useEffect, useRef, useState } from "react";
 
 import styles from "./GameProvider.module.css";
 import { createGame, type Game } from "../game/GameEngine.ts";
 import { GameContext } from "./GameContext.ts";
 
-// enum GameStates {
-//   PAUSED = "PAUSED",
-//   GAMEOVER = "GAMEOVER",
-//   CUTSCENE = "CUTSCENE",
-//   TITLE = "TITLE",
-//   ENDSCENE = "ENDSCENE",
-// }
-
-let didInit = false;
-
-function GameProvider({ children }: { children: ReactNode }) {
+const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [gameEngine, setGameEngine] = useState<Game | null>(null);
-  // const [gameState, setGameState] = useState<null | GameStates>(null);
 
   useEffect(() => {
     if (canvasRef.current) {
-      if (!didInit) {
-        didInit = true;
-        const canvasContext = canvasRef.current.getContext("2d");
-
-        if (!canvasContext) {
-          throw new Error("Could not get context from canvas element");
-        }
-        const gameEngineInstance = createGame(canvasContext);
-        setGameEngine(gameEngineInstance);
-        // setGameState(GameStates.TITLE);
-      } else {
-        console.log("%c✅ GameProvider initialized", "color:green");
+      const canvasContext = canvasRef.current.getContext("2d");
+      console.log(`Canvas context initialized`);
+      if (!canvasContext) {
+        throw new Error("Could not get context from canvas element");
       }
+      const gameEngineInstance = createGame(canvasContext);
+      setGameEngine(gameEngineInstance);
+    } else {
+      console.log("Canvas element not found!");
     }
   }, []);
 
@@ -48,6 +33,6 @@ function GameProvider({ children }: { children: ReactNode }) {
       {children}
     </GameContext.Provider>
   );
-}
+};
 
 export { GameProvider };
