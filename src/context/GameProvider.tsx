@@ -1,16 +1,8 @@
-import React, {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { ReactNode, useEffect, useRef, useState } from "react";
 
-import styles from "./Game.module.css";
+import styles from "./GameProvider.module.css";
 import { createGame, type Game } from "../game/GameEngine.ts";
-
-const GameContext = createContext<Game | null>(null);
+import { GameContext } from "./GameContext.ts";
 
 const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -19,7 +11,7 @@ const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   useEffect(() => {
     if (canvasRef.current) {
       const canvasContext = canvasRef.current.getContext("2d");
-      console.log(`Canvas context intialized`);
+      console.log(`Canvas context initialized`);
       if (!canvasContext) {
         throw new Error("Could not get context from canvas element");
       }
@@ -43,6 +35,4 @@ const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   );
 };
 
-const useGame = () => useContext(GameContext);
-
-export { GameProvider, useGame };
+export { GameProvider };

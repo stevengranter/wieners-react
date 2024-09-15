@@ -1,12 +1,15 @@
 import "./App.css";
-import { GameProvider } from "./context/Game.tsx";
+import { GameProvider } from "./context/GameProvider.tsx";
+import TitleScreen from "./components/TitleScreen.tsx";
 import ReactCanvasOverlay from "./components/ReactCanvasOverlay.tsx";
 
 function App() {
   return (
     <>
       <GameProvider>
-        <ReactCanvasOverlay />
+        <ReactCanvasOverlay>
+          <TitleScreen />
+        </ReactCanvasOverlay>
       </GameProvider>
     </>
   );

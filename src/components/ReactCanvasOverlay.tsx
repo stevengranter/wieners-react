@@ -1,11 +1,11 @@
-// TitleScreen.tsx
+// ReactCanvasOverlay.tsx
 
 import styles from "./ReactCanvasOverlay.module.css";
 
-import { useEffect } from "react";
-import { useGame } from "../context/Game.tsx";
+import { PropsWithChildren, useEffect } from "react";
+import { useGame } from "../context/GameContext.ts";
 
-function ReactCanvasOverlay() {
+function ReactCanvasOverlay({ children }: PropsWithChildren) {
   const game = useGame();
   console.log(game);
 
@@ -25,7 +25,7 @@ function ReactCanvasOverlay() {
 
   return (
     <div id={styles["canvas-overlay"]}>
-      <h1>React Canvas Overlay</h1>
+      {children ? <>{children}</> : <p>#canvas-overlay is empty</p>}
     </div>
   );
 }
