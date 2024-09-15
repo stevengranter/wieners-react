@@ -1,14 +1,15 @@
-import './App.css'
-import GameCanvas from "./components/GameCanvas.tsx";
+import "./App.css";
+import { GameProvider } from "./context/Game.tsx";
+import ReactCanvasOverlay from "./components/ReactCanvasOverlay.tsx";
 
 function App() {
-
-
   return (
     <>
-     <GameCanvas id="canvas" />
+      <GameProvider>
+        <ReactCanvasOverlay />
+      </GameProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

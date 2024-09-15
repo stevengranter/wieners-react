@@ -1,20 +1,41 @@
-import createUser from "./User.ts";
-import createScene from "./Scene.ts";
+// World.ts
+//
+// ✅Responsibilities:
+//
+// 1. Creating all the objects in the game world
+// 2. Keeping track of where all the object exist in the game world in one time slice
+//
+// 🚫NOT responsible for:
+// * Rendering
+// * Game logic
+// * Time management
+// * WorldUser interaction
 
-let instance: { createUser: () => {id:string,x:number,y:number,width:number,height:number}, createScene: () => void } | null = null;
+import createScene from "./WorldScene.ts";
+import createActor from "./WorldActor.ts";
 
-function World() {
-    if (!instance) {
-        instance = {
-            createUser,
-            createScene
-        };
-    } else {
-        throw new Error("World already exists, use existing world instance");
-    }
+import Actor from "./WorldActor.ts";
+import Scene from "./WorldScene.ts";
 
-    return instance;
+type World = {
+  createActor: typeof Actor;
+  createScene: typeof Scene;
+};
+
+let instance: World | null = null;
+
+function World(): World {
+  if (!instance) {
+    instance = {
+      createScene,
+      createActor,
+    };
+  } else {
+    throw new Error("World already exists, use existing world instance");
+  }
+
+  return instance;
 }
 
-const createWorld = World
-export default createWorld
+const createWorld = World;
+export default createWorld;
