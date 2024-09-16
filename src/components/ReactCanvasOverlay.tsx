@@ -17,8 +17,6 @@ function ReactCanvasOverlay({ children }: PropsWithChildren) {
     if (!didInit) {
       if (game) {
         const { ctx, renderCanvas } = game;
-        setContext(ctx);
-        console.log("Canvas context initialized");
         renderCanvas(ctx);
         didInit = true;
       } else {
