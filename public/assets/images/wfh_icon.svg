@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g>
+        <rect id="Artboard1" x="0" y="0" width="128" height="128" style="fill:none;"/>
+        <g id="Artboard11" serif:id="Artboard1">
+            <g id="Wiener" transform="matrix(0.286454,0.0850444,-0.0850444,0.286454,-42.6383,-111.814)">
+                <path d="M515.259,454.025C389.167,410.926 396.46,310.77 317.631,348.067C242.756,383.492 342.368,530.251 472.655,568.918C586.778,602.788 733.082,609.83 725.272,524.258C717.762,441.981 625.957,491.864 515.259,454.025Z" style="fill:url(#_Radial1);"/>
+                <clipPath id="_clip2">
+                    <path d="M515.259,454.025C389.167,410.926 396.46,310.77 317.631,348.067C242.756,383.492 342.368,530.251 472.655,568.918C586.778,602.788 733.082,609.83 725.272,524.258C717.762,441.981 625.957,491.864 515.259,454.025Z"/>
+                </clipPath>
+                <g clip-path="url(#_clip2)">
+                    <g id="Highlight" transform="matrix(0.883517,0.0999359,-0.107043,0.946353,60.0809,-32.1809)">
+                        <path d="M409.211,392.62C409.211,392.62 457.482,444.286 528.859,465.892C597.066,486.538 675.912,479.272 675.912,479.272" style="fill:none;stroke:white;stroke-width:18.81px;"/>
+                    </g>
+                    <g id="HIghlight" transform="matrix(0.0907733,-0.00163889,-0.00562869,0.0141274,597.544,484.918)">
+                        <path d="M409.211,392.62C409.211,392.62 464.448,415.453 535.825,437.059C604.032,457.706 675.912,479.272 675.912,479.272" style="fill:none;stroke:white;stroke-width:284.85px;"/>
+                    </g>
+                    <g id="HIghlight1" serif:id="HIghlight" transform="matrix(2.36337,1.31194e-16,0,2.36337,-137.768,-378.44)">
+                        <circle cx="348.525" cy="369.695" r="3.469" style="fill:white;"/>
+                    </g>
+                </g>
+                <path d="M521.446,435.924C586.732,458.24 645.378,449.151 683.408,456.069C700.56,459.19 714.358,465.231 724.629,475.395C735.014,485.671 742.302,500.391 744.322,522.52C748.391,567.108 721.993,593.761 677.351,605.228C623.34,619.102 539.159,608.61 467.212,587.257C368.665,558.01 287.494,470.304 274.731,407.919C267.711,373.608 278.301,345.512 309.45,330.775C329.92,321.09 346.048,319.249 359.853,321.821C373.907,324.439 385.993,331.794 397.904,342.776C423.63,366.499 449.443,411.313 521.446,435.924ZM515.259,454.025C389.167,410.926 396.46,310.77 317.631,348.067C242.756,383.492 342.368,530.251 472.655,568.918C586.778,602.788 733.082,609.83 725.272,524.258C717.762,441.981 625.957,491.864 515.259,454.025Z" style="fill:rgb(84,0,0);"/>
+            </g>
+        </g>
+        <g transform="matrix(0.0987471,-0.00889198,0.00922188,0.102411,73.5198,43.642)">
+        </g>
+    </g>
+    <defs>
+        <radialGradient id="_Radial1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(231.475,79.5425,-42.363,123.28,529.517,427.373)"><stop offset="0" style="stop-color:rgb(252,182,166);stop-opacity:1"/><stop offset="0.55" style="stop-color:rgb(245,165,145);stop-opacity:1"/><stop offset="1" style="stop-color:rgb(221,103,67);stop-opacity:1"/></radialGradient>
+    </defs>
+</svg>

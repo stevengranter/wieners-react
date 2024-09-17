@@ -1,3 +1,14 @@
+:root {
+    --clr-pink: oklch(70.58% 0.2641 359.47);
+    --clr-red: #f03668;
+    --clr-orange: #ff775a;
+    --clr-gold: #fcd224;
+    --clr-green: #a0cc50;
+    --clr-sky-blue: #0ad1ea;
+    --clr-purple: #d379ff;
+    --clr-violet: #7b28a4;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -13,6 +24,19 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+#game-container {
+    position:absolute;
+}
+#game-container_overlay {
+    position:relative;
+    background-color:transparent;
+    width: 475px;
+    height: 270px;
+    display:flex;
+    align-content:center;
+    overflow:hidden;
+    justify-content: center;
 }
 
 .spritePosition {
