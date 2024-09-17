@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,0,-149)">
+        <g id="Music-Icon" serif:id="Music Icon" transform="matrix(1,0,0,1,0,149)">
+            <rect x="0" y="0" width="128" height="128" style="fill:none;"/>
+            <g id="ui-music_icon.svg" transform="matrix(0.702479,0,0,0.702479,60,64)">
+                <g transform="matrix(1,0,0,1,-50,-60.5)">
+                    <clipPath id="_clip1">
+                        <rect x="0" y="0" width="100" height="121"/>
+                    </clipPath>
+                    <g clip-path="url(#_clip1)">
+                        <path id="Music-ICON" serif:id="Music ICON" d="M34.698,105.782C34.743,106.189 34.766,106.6 34.766,107.015C34.766,114.689 26.977,120.919 17.383,120.919C7.789,120.919 0,114.689 0,107.015C0,99.341 7.789,93.111 17.383,93.111C19.624,93.111 21.766,93.451 23.734,94.07L23.734,27.549C23.734,24.943 25.303,22.641 27.602,21.874L92.363,0.263C94.026,-0.292 95.834,0.042 97.234,1.161C98.634,2.281 99.46,4.054 99.46,5.939L99.46,78.61C99.504,79.016 99.527,79.427 99.527,79.843C99.527,87.517 91.738,93.747 82.144,93.747C72.55,93.747 64.761,87.517 64.761,79.843C64.761,72.169 72.55,65.939 82.144,65.939C84.385,65.939 86.528,66.279 88.495,66.897L88.495,30.66L34.698,48.48L34.698,105.782Z"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
