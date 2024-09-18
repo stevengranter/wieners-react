@@ -6,33 +6,30 @@ export class Level01 extends Scene {
     camera: Phaser.Cameras.Scene2D.Camera;
     background: Phaser.GameObjects.Image;
     player: Player;
-    wiener: Phaser.GameObjects.Sprite;
-    floor: Phaser.GameObjects.Rectangle;
+    wiener: Phaser.Physics.Arcade.Sprite;
+    floor: Phaser.Physics.Arcade.Image;
 
     constructor() {
         super("Level01");
     }
 
     create() {
-        this.camera = this.cameras.main;
-        this.camera.setBackgroundColor(0x00ff00);
+        this.camera = this.cameras.main.setBackgroundColor(0x000000);
+        this.scene.start("Background", {
+            imageFileName: "bg_garden-layer-0.webp",
+        });
+        this.scene.start("Foreground", {
+            imageFileName: "bg_garden-layer-1.webp",
+        });
 
-        this.background = this.add.image(0, 0, "background0");
-        this.background.setOrigin(0, 0);
-        this.background.displayWidth = this.scale.width;
-        this.background.displayHeight = this.scale.height;
+        this.scene.start("Gameplay");
 
-        this.player = new Player(this, 0, 0, "nanny");
+        this.scene.bringToTop("Foreground");
+        this.scene.sendToBack("Background");
 
-        this.floor = this.add.rectangle(0, 210, this.scale.width, 20);
-        this.floor.setOrigin(0, 0);
-
-        this.physics.add.staticGroup(this.floor);
-        this.physics.add.collider(this.player, this.floor);
-
-        this.wiener = this.add.sprite(this.scale.width / 2, 0, "wiener");
-        this.wiener.displayHeight = 20;
-        this.wiener.displayWidth = 20;
+        // this.scene.start("Foreground", {
+        //     imageFileName: "bg_garden-layer-1.webp",
+        // });
 
         EventBus.emit("current-scene-ready", this);
     }
@@ -43,5 +40,6 @@ export class Level01 extends Scene {
 
     update() {
         this.player.update();
+        // if (!this.wiener.body.touching.down) this.wiener.rotation += 0.1;
     }
 }

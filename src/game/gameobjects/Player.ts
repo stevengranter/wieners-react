@@ -1,5 +1,6 @@
 import { Scene } from "phaser";
 import CursorKeys = Phaser.Types.Input.Keyboard.CursorKeys;
+import { ASSET_KEYS } from "../main.ts";
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
     // private _id: `${string}-${string}-${string}-${string}-${string}`;
@@ -16,51 +17,51 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     constructor(scene: Scene, x: integer, y: integer, name: string = "nanny") {
         super(scene, x, y, name);
         this.name = name;
-        this._wasdKeys = this.setWASDKeys();
-        this._cursorKeys = this.setCursorKeys();
-
-        // Ensure scene is properly initialized
-        if (scene) {
-            scene.add.existing(this);
-            scene.physics.add.existing(this);
-            scene.physics.world.enable(this);
-            this.setCollideWorldBounds(true);
-            this.init();
-            this.setMass(10);
-            this.scene.events.on("create", this.setCursorKeys, this);
-        } else {
-            console.error("Scene is not initialized properly.");
-        }
+        this.scene = scene;
+        this.init();
     }
 
     init() {
-        const columnsPerRow = 5; // Example value based on sprite sheet configuration
+        this.scene.add.existing(this);
+        this.scene.physics.add.existing(this);
 
-        const walkRightFrames = [];
-        for (let i = 0; i < columnsPerRow; i++) {
-            walkRightFrames.push({ key: "nanny", frame: i }); // Adjust the frame index based on your sprite sheet
-        }
+        this.setCollideWorldBounds(true);
 
-        const walkLeftFrames = [];
-        for (let i = 0; i < columnsPerRow; i++) {
-            walkLeftFrames.push({ key: "nanny", frame: i + columnsPerRow }); // Offset by the number of columns in a row
-        }
+        this._wasdKeys = this.setWASDKeys();
+        this._cursorKeys = this.setCursorKeys();
 
-        console.log(walkRightFrames);
+        this.createAnimations();
+    }
 
-        // Create animations
+    createAnimations() {
         this.anims.create({
-            key: "walkRight",
-            frames: walkRightFrames,
+            key: "right",
+            frames: this.anims.generateFrameNumbers("nanny", {
+                start: 0,
+                end: 4,
+            }),
             frameRate: 10,
             repeat: -1,
         });
 
         this.anims.create({
-            key: "walkLeft", // Animation key for walking left
-            frames: walkLeftFrames, // Frames from the second row (walkleft)
-            frameRate: 10, // Frame rate in this example
-            repeat: -1, // Infinite loop
+            key: "turn",
+            frames: this.anims.generateFrameNumbers("nanny", {
+                start: 0,
+                end: 0,
+            }),
+            frameRate: 10,
+            repeat: -1,
+        });
+
+        this.anims.create({
+            key: "left",
+            frames: this.anims.generateFrameNumbers("nanny", {
+                start: 5,
+                end: 9,
+            }),
+            frameRate: 10,
+            repeat: -1,
         });
     }
 
@@ -92,37 +93,32 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         return this.scene.input.keyboard.createCursorKeys();
     }
 
-    walkRight() {
-        this.anims.play("walkRight");
-        this.x += 1;
-    }
-
-    walkLeft() {
-        this.anims.play("walkLeft");
-        this.x += -1;
-    }
-
     jump() {
+        if (!this.body?.touching.down) return;
         this.anims.stop();
-        this.setVelocityY(-100);
+        this.setVelocityY(-125);
+        this.setAccelerationY(50);
     }
 
     update() {
         if (!this._cursorKeys && !this._wasdKeys)
             throw new Error("Oh no, no input keys defined");
         if (this._cursorKeys?.left.isDown || this._wasdKeys?.A.isDown) {
-            this.walkLeft();
+            this.anims.play("left", true);
+            this.setVelocityX(-100);
         } else if (this._cursorKeys?.right.isDown || this._wasdKeys?.D.isDown) {
-            this.walkRight();
-        } else if (
+            this.anims.play("right", true);
+            this.setVelocityX(100);
+        } else {
+            this.anims.play("turn", true);
+            this.setVelocityX(0);
+        }
+        if (
             this._cursorKeys?.space.isDown ||
             this._cursorKeys?.up.isDown ||
             this._wasdKeys?.W.isDown
         ) {
             this.jump();
-        } else {
-            // idle animation
-            this.anims.stop();
         }
     }
 }
