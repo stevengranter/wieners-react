@@ -14,14 +14,14 @@ export class Gameplay extends Phaser.Scene {
     maxWieners: 1000;
     cursors: CursorKeys;
     gull: Phaser.Physics.Arcade.Sprite;
-    private _wasdKeys?:
-        | {
-              W: Phaser.Input.Keyboard.Key;
-              A: Phaser.Input.Keyboard.Key;
-              S: Phaser.Input.Keyboard.Key;
-              D: Phaser.Input.Keyboard.Key;
-          }
-        | undefined;
+    // private _wasdKeys?:
+    //     | {
+    //           W: Phaser.Input.Keyboard.Key;
+    //           A: Phaser.Input.Keyboard.Key;
+    //           S: Phaser.Input.Keyboard.Key;
+    //           D: Phaser.Input.Keyboard.Key;
+    //       }
+    //     | undefined;
 
     constructor() {
         super({ key: "Gameplay" });
