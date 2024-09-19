@@ -31,11 +31,16 @@ const config: Phaser.Types.Core.GameConfig = {
     type: AUTO,
     width: CANVAS.WIDTH,
     height: CANVAS.HEIGHT,
+    antialiasGL: false,
+    antialias: false,
     parent: "game-container",
     backgroundColor: "#0ad1ea",
     physics: {
         default: "arcade",
-        arcade: { gravity: { x: 0, y: 250 }, debug: true },
+        arcade: {
+            gravity: { x: 0, y: 100 },
+            debug: true,
+        },
     },
     scene: [
         Boot,

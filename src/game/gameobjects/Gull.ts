@@ -42,6 +42,7 @@ export default class Gull extends Phaser.GameObjects.Sprite {
             this.y,
             ASSET_KEYS.GULL_POO,
         );
+        this.projectile.setScale(1);
     }
 
     update() {

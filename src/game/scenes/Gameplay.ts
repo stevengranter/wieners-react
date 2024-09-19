@@ -10,6 +10,8 @@ export class Gameplay extends Phaser.Scene {
     player: Phaser.Physics.Arcade.Sprite;
     wiener: Phaser.Physics.Arcade.Sprite;
     floor: Phaser.Physics.Arcade.Image;
+    debugKeyCommand;
+    isDebugMode = false;
     initialSpawnCount: 10;
     maxWieners: 1000;
     cursors: CursorKeys;
@@ -28,38 +30,29 @@ export class Gameplay extends Phaser.Scene {
     }
 
     create() {
+        // 🎥 Set camera to cameras.main
         this.camera = this.cameras.main;
 
-        this.player = new Player(this, 0, 0, ASSET_KEYS.NANNY);
+        this.camera.roundPixels = true;
+        this.player = new Player(this, 125, 190, ASSET_KEYS.NANNY);
+        //
+        // this.player2 = this.physics.add.sprite(600, 500, "nannyHD");
+        // this.player2.setScale(0.2);
 
-        this.floor = this.physics.add.staticImage(0, 235, ASSET_KEYS.FLOOR);
+        this.floor = this.physics.add.staticImage(0, 265, ASSET_KEYS.FLOOR);
         this.floor.setVisible(false);
+        this.floor.setOrigin(0, 0);
+        this.floor.setSize(1600, 100);
         this.floor.setImmovable(true);
         this.floor.setMass(100);
 
         this.physics.add.collider(this.player, this.floor);
 
-        this.wiener = this.physics.add.sprite(
-            this.scale.width / 2,
-            0,
-            ASSET_KEYS.WIENER,
-        ) as Phaser.Physics.Arcade.Sprite;
-
-        if (this.wiener.body) {
-            this.wiener.body.setSize(20, 20);
-        }
-
-        this.wiener.displayWidth = 20;
-        this.wiener.displayHeight = 20;
-
-        this.wiener.setDrag(200);
-        this.wiener.setGravity(0.5);
-        this.wiener.setAccelerationY(-200);
-
         // Create a physics group for wieners
         this.wieners = this.physics.add.group();
 
         this.gull = new Gull(this, 400, 10, ASSET_KEYS.GULL);
+        this.gull.scale = 1;
 
         this.setWASDKeys();
 
@@ -77,20 +70,43 @@ export class Gameplay extends Phaser.Scene {
 
         // Set up a timed event to spawn additional wieners
         this.time.addEvent({
-            delay: 2000, // Spawn every 2 seconds
+            delay: 750, // Spawn every 2 seconds
             callback: this.spawnWieners,
             callbackScope: this,
             args: [10], // Number of wieners to spawn each interval
             loop: true,
         });
+
+        this.time.addEvent({
+            delay: 10000, // Spawn every 2 seconds
+            callback: () => {
+                this.jumbo = this.physics.add.sprite(
+                    Phaser.Math.Between(0, 475),
+                    -100,
+                    ASSET_KEYS.WIENER,
+                    3,
+                );
+                this.jumbo.setDisplaySize(125, 125);
+                this.jumbo.setVelocityY(200);
+            },
+            callbackScope: this,
+            args: [10], // Number of wieners to spawn each interval
+            loop: true,
+        });
         // Create a collider for the wieners with the floor
-        this.physics.add.collider(this.wieners, this.floor);
+        // this.physics.add.collider(this.wieners, this.floor);
         this.physics.add.overlap(
             this.player,
             this.wieners,
             this.handleOverlap,
             null,
             this,
+        );
+
+        // 🐞 Set key for debug mode
+        this.physics.world.drawDebug = false;
+        this.debugKeyCommand = this.input.keyboard.addKey(
+            Phaser.Input.Keyboard.KeyCodes.P,
         );
 
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -123,23 +139,16 @@ export class Gameplay extends Phaser.Scene {
         wiener.isDestroyed = true;
         wiener.setActive(false);
         wiener.setVisible(false);
-        player.health = 10;
-        console.log(player.health);
 
-        console.log("overlap!");
+        // Set player health and score
+        player.health = 10;
+        player.score = 100;
 
         // Schedule actual destruction for the next physics step
         this.time.delayedCall(0, () => {
             wiener.destroy();
         });
     }
-    // createPlayer() {
-    //     // this.createPlayerAnimations();
-    //     this.player = this.physics.add.sprite(0, 0, ASSET_KEYS.NANNY);
-    //     // this.player.setBounce(0, 0.2);
-    //     // this.player.setMass(500);
-    //     // this.player.setGravity(0, 50);
-    // }
 
     createPlayerAnimations() {
         this.anims.create({
@@ -171,48 +180,64 @@ export class Gameplay extends Phaser.Scene {
 
     // Function to spawn a specified number of wieners
     spawnWieners() {
-        console.log("spawning wieners");
+        // console.log("spawning wieners");
         const currentCount = this.wieners.getChildren().length | 1;
-        console.log({ currentCount });
+        // console.log({ currentCount });
         // const spawnCount = Math.min(count, this.maxWieners - currentCount);
-        const spawnCount = 1;
-        console.log({ spawnCount });
+        const spawnCount = 5;
+        // console.log({ spawnCount });
         for (let i = 0; i < spawnCount; i++) {
-            const x = 50;
-            const y = 50;
-            // const x = Phaser.Math.Between(0, this.scale.width);
+            // const x = i * 10;
+            const y = Phaser.Math.Between(-200, 0);
+            const x = Phaser.Math.Between(0, this.scale.width);
+            const velocityY = Phaser.Math.Between(0, 50);
+            const velocityX = Phaser.Math.Between(-25, 25);
+            const size = Phaser.Math.Between(20, 30);
+            const rotation = Phaser.Math.Between(5, 20);
+            const acceleration = Phaser.Math.Between(-200, -100);
             // const y = 100;
             const wiener = this.wieners.create(
                 x,
                 y,
                 ASSET_KEYS.WIENER,
             ) as Phaser.Physics.Arcade.Sprite;
-            wiener.setDisplaySize(20, 20); // Set uniform size
-            wiener.setBounce(1, 1); // Example property
-            wiener.setGravity(1);
-            // wiener.setVelocity(Phaser.Math.Between(-200, 200), 20); // Example velocity
+            wiener.setDisplaySize(size, size);
+            wiener.setGravity(4);
+            // wiener.preFX.addGlow();
+            // wiener.setMass(0);
+            // wiener.setVelocityY(velocityY);
+            // wiener.setVelocityX(velocityX);
+            // wiener.setRotation(rotation);
+            // wiener.setAccelerationY(acceleration);
+            // // wiener.setDrag(800);
         }
     }
 
     update() {
         this.player.update();
         this.gull.update();
-        // if (!this.cursors && !this._wasdKeys)
-        //     throw new Error("Oh no, no input keys defined");
-        // if (this.cursors?.left.isDown || this._wasdKeys?.A.isDown) {
-        //     this.player.anims.play("left", true);
-        //     this.player.setVelocityX(-100);
-        // } else if (this.cursors?.right.isDown || this._wasdKeys?.D.isDown) {
-        //     this.player.anims.play("right", true);
-        //     this.player.setVelocityX(100);
-        // }
 
-        // if (
-        //     this.cursors?.space.isDown ||
-        //     this.cursors?.up.isDown ||
-        //     this._wasdKeys?.W.isDown
-        // ) {
-        //     this.jump();
-        // }
+        this.wieners.children.each((child: Phaser.Physics.Arcade.Sprite) => {
+            child.rotation += 0.05;
+        });
+        if (this.jumbo) {
+            this.jumbo.rotation -= 0.05;
+        }
+
+        if (Phaser.Input.Keyboard.JustDown(this.debugKeyCommand)) {
+            if (this.physics.world.drawDebug) {
+                this.physics.world.drawDebug = false;
+                this.isDebugMode = false;
+                this.physics.world.debugGraphic.clear();
+            } else {
+                this.isDebugMode = true;
+                this.physics.world.drawDebug = true;
+            }
+        }
+
+        if (this.isDebugMode) {
+            console.log(`player.x = ${this.player.x}`);
+            console.log(`player.y = ${this.player.y}`);
+        }
     }
 }

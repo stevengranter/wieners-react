@@ -1,6 +1,7 @@
 import { Scene } from "phaser";
 import CursorKeys = Phaser.Types.Input.Keyboard.CursorKeys;
 // import { ASSET_KEYS } from "../main.ts";
+import { EventBus } from "../EventBus.ts";
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
     // private _id: `${string}-${string}-${string}-${string}-${string}`;
@@ -13,14 +14,16 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
               D: Phaser.Input.Keyboard.Key;
           }
         | undefined;
-    #health = 50;
+    #health = 0;
     #maxHealth = 100;
+    #score = 0;
 
     constructor(scene: Scene, x: integer, y: integer, name: string = "nanny") {
         super(scene, x, y, name);
         this.name = name;
         this.scene = scene;
         this.init();
+        this.scale = 1;
     }
 
     set health(amount: integer) {
@@ -30,7 +33,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         } else {
             this.#health = updatedHealth;
         }
-
+        EventBus.emit("player-health-update", this.#health);
         console.log("this.playerHealth = " + this.#health);
     }
 
@@ -38,9 +41,23 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         return this.#health;
     }
 
+    set score(amount: integer) {
+        const updatedScore = this.#score + amount;
+        if (updatedScore <= 0) {
+            this.#score = 0;
+        } else {
+            this.#score = updatedScore;
+        }
+        EventBus.emit("player-score-update", this.#score);
+    }
+
+    get score() {
+        return this.#score;
+    }
     init() {
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
+        this.health = 50;
 
         this.setCollideWorldBounds(true);
 
@@ -113,8 +130,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     jump() {
         if (!this.body?.touching.down) return;
         this.anims.stop();
-        this.setVelocityY(-125);
-        this.setAccelerationY(50);
+        this.setVelocityY(-300);
+        this.setAccelerationY(1000);
     }
 
     update() {
@@ -122,10 +139,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             throw new Error("Oh no, no input keys defined");
         if (this._cursorKeys?.left.isDown || this._wasdKeys?.A.isDown) {
             this.anims.play("left", true);
-            this.setVelocityX(-100);
+            this.setVelocityX(-150);
         } else if (this._cursorKeys?.right.isDown || this._wasdKeys?.D.isDown) {
             this.anims.play("right", true);
-            this.setVelocityX(100);
+            this.setVelocityX(150);
         } else {
             this.anims.play("turn", true);
             this.setVelocityX(0);

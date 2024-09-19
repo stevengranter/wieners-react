@@ -17,12 +17,15 @@ export class MainMenu extends Scene {
 
         const posCanvasCenter = {
             x: this.scale.width / 2,
-            y: this.scale.height / 2,
+            y: this.scale.height / 2 - 16,
         };
 
-        this.logo = this.add
-            .image(posCanvasCenter.x, posCanvasCenter.y, "logo")
-            .setDepth(100);
+        this.logo = this.add.image(
+            posCanvasCenter.x,
+            posCanvasCenter.y,
+            "logo",
+        );
+        // .setDepth(100);
         this.logo.setScale(0.2);
 
         EventBus.emit("current-scene-ready", this);

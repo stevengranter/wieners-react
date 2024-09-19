@@ -36,6 +36,11 @@ export class Preloader extends Scene {
             },
         );
 
+        this.load.image(
+            "nannyHD",
+            "images/sprites/sprite_nan-standing-right_hd.webp",
+        );
+
         this.load.spritesheet(
             ASSET_KEYS.GULL,
             "images/sprites/sprite_seagull-flying-01.png",
@@ -61,7 +66,7 @@ export class Preloader extends Scene {
         );
         this.load.image(ASSET_KEYS.WIENER, "images/wfh_icon.svg");
         this.load.image(ASSET_KEYS.LOGO, "logo.png");
-        this.load.image(ASSET_KEYS.FLOOR, "images/temp/platform.png");
+        this.load.image(ASSET_KEYS.FLOOR, "images/temp/platform-1280.png");
     }
 
     create() {
