@@ -10,8 +10,8 @@ import { Foreground } from "./scenes/Foreground.ts";
 import { Gameplay } from "./scenes/Gameplay.ts";
 
 export const CANVAS = {
-    WIDTH: 475,
-    HEIGHT: 270,
+    WIDTH: 1280,
+    HEIGHT: 720,
 };
 
 export enum ASSET_KEYS {

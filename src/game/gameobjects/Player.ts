@@ -23,7 +23,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.name = name;
         this.scene = scene;
         this.init();
-        this.scale = 1;
+        this.scale = 2.5;
     }
 
     set health(amount: integer) {
@@ -130,7 +130,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     jump() {
         if (!this.body?.touching.down) return;
         this.anims.stop();
-        this.setVelocityY(-300);
+        this.setVelocityY(-500);
         this.setAccelerationY(1000);
     }
 
@@ -139,10 +139,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             throw new Error("Oh no, no input keys defined");
         if (this._cursorKeys?.left.isDown || this._wasdKeys?.A.isDown) {
             this.anims.play("left", true);
-            this.setVelocityX(-150);
+            this.setVelocityX(-350);
         } else if (this._cursorKeys?.right.isDown || this._wasdKeys?.D.isDown) {
             this.anims.play("right", true);
-            this.setVelocityX(150);
+            this.setVelocityX(350);
         } else {
             this.anims.play("turn", true);
             this.setVelocityX(0);

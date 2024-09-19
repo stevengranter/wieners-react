@@ -33,16 +33,16 @@ export class Gameplay extends Phaser.Scene {
         // 🎥 Set camera to cameras.main
         this.camera = this.cameras.main;
 
-        this.camera.roundPixels = true;
+        this.camera.roundPixels = false;
         this.player = new Player(this, 125, 190, ASSET_KEYS.NANNY);
         //
         // this.player2 = this.physics.add.sprite(600, 500, "nannyHD");
         // this.player2.setScale(0.2);
 
-        this.floor = this.physics.add.staticImage(0, 265, ASSET_KEYS.FLOOR);
+        this.floor = this.physics.add.staticImage(0, 635, ASSET_KEYS.FLOOR);
         this.floor.setVisible(false);
         this.floor.setOrigin(0, 0);
-        this.floor.setSize(1600, 100);
+        this.floor.setSize(2600, 100);
         this.floor.setImmovable(true);
         this.floor.setMass(100);
 
@@ -52,7 +52,7 @@ export class Gameplay extends Phaser.Scene {
         this.wieners = this.physics.add.group();
 
         this.gull = new Gull(this, 400, 10, ASSET_KEYS.GULL);
-        this.gull.scale = 1;
+        this.gull.scale = 2.5;
 
         this.setWASDKeys();
 
@@ -86,7 +86,7 @@ export class Gameplay extends Phaser.Scene {
                     ASSET_KEYS.WIENER,
                     3,
                 );
-                this.jumbo.setDisplaySize(125, 125);
+                this.jumbo.setDisplaySize(300, 300);
                 this.jumbo.setVelocityY(200);
             },
             callbackScope: this,
@@ -192,7 +192,7 @@ export class Gameplay extends Phaser.Scene {
             const x = Phaser.Math.Between(0, this.scale.width);
             const velocityY = Phaser.Math.Between(0, 50);
             const velocityX = Phaser.Math.Between(-25, 25);
-            const size = Phaser.Math.Between(20, 30);
+            const size = Phaser.Math.Between(50, 70);
             const rotation = Phaser.Math.Between(5, 20);
             const acceleration = Phaser.Math.Between(-200, -100);
             // const y = 100;

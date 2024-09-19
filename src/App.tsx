@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { IRefPhaserGame, PhaserGame } from "./game/PhaserGame";
 import { MainMenu } from "./game/scenes/MainMenu";
-import UiOverlay from "./ui/UiOverlay.tsx";
 
 function App() {
     // The sprite can only be moved in the MainMenu Scene

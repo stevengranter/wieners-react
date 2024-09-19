@@ -12,17 +12,9 @@ export default class Gull extends Phaser.GameObjects.Sprite {
 
     init() {
         this.scene.add.existing(this);
-        // this.scene.physics.add.existing(this);
-
-        // this.setCollideWorldBounds(false);
-
+        this.setDisplaySize(300, 300);
         this.createAnimations();
-
-        // this.setMass(0);
-        // this.setGravity(0);
-        // this.setVelocityY(-100);
-
-        this.launchProjectile();
+        // this.launchProjectile();
     }
 
     createAnimations() {
@@ -42,7 +34,7 @@ export default class Gull extends Phaser.GameObjects.Sprite {
             this.y,
             ASSET_KEYS.GULL_POO,
         );
-        this.projectile.setScale(1);
+        this.projectile.setScale(2.5);
     }
 
     update() {

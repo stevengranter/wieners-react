@@ -60,7 +60,7 @@ body {
     width:100%;
 }
 #game-container_overlay {
-    aspect-ratio: 475/270;
+    aspect-ratio: 16/9;
     position:absolute;
     background-color:transparent;
     width: 100%;
