@@ -26,7 +26,7 @@ export class MainMenu extends Scene {
             "logo",
         );
         // .setDepth(100);
-        this.logo.setScale(0.2);
+        this.logo.setScale(0.5);
 
         EventBus.emit("current-scene-ready", this);
     }

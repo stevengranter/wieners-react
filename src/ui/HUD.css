@@ -93,6 +93,7 @@
     z-index: 5;
     display: block;
     position: relative;
+    image-rendering:pixelated;
     /* border: 1px solid magenta; */
 }
 
