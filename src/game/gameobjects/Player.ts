@@ -13,12 +13,29 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
               D: Phaser.Input.Keyboard.Key;
           }
         | undefined;
+    #health = 50;
+    #maxHealth = 100;
 
     constructor(scene: Scene, x: integer, y: integer, name: string = "nanny") {
         super(scene, x, y, name);
         this.name = name;
         this.scene = scene;
         this.init();
+    }
+
+    set health(amount: integer) {
+        const updatedHealth = this.#health + amount;
+        if (updatedHealth >= 100) {
+            this.#health = this.#maxHealth;
+        } else {
+            this.#health = updatedHealth;
+        }
+
+        console.log("this.playerHealth = " + this.#health);
+    }
+
+    get health() {
+        return this.#health;
     }
 
     init() {

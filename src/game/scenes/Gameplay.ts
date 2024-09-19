@@ -85,6 +85,13 @@ export class Gameplay extends Phaser.Scene {
         });
         // Create a collider for the wieners with the floor
         this.physics.add.collider(this.wieners, this.floor);
+        this.physics.add.overlap(
+            this.player,
+            this.wieners,
+            this.handleOverlap,
+            null,
+            this,
+        );
 
         this.cursors = this.input.keyboard.createCursorKeys();
     }
@@ -109,6 +116,23 @@ export class Gameplay extends Phaser.Scene {
         return { W, A, S, D };
     }
 
+    handleOverlap(player, wiener) {
+        if (wiener.isDestroyed) return; // Prevent repeated processing
+
+        // Mark as destroyed
+        wiener.isDestroyed = true;
+        wiener.setActive(false);
+        wiener.setVisible(false);
+        player.health = 10;
+        console.log(player.health);
+
+        console.log("overlap!");
+
+        // Schedule actual destruction for the next physics step
+        this.time.delayedCall(0, () => {
+            wiener.destroy();
+        });
+    }
     // createPlayer() {
     //     // this.createPlayerAnimations();
     //     this.player = this.physics.add.sprite(0, 0, ASSET_KEYS.NANNY);
@@ -146,12 +170,12 @@ export class Gameplay extends Phaser.Scene {
     }
 
     // Function to spawn a specified number of wieners
-    spawnWieners(count: number = 10) {
+    spawnWieners(count: number = 1) {
         console.log("spawning wieners");
-        const currentCount = this.wieners.getChildren().length | 100;
+        const currentCount = this.wieners.getChildren().length | 1;
         console.log({ currentCount });
         // const spawnCount = Math.min(count, this.maxWieners - currentCount);
-        const spawnCount = 100;
+        const spawnCount = 1;
         console.log({ spawnCount });
         for (let i = 0; i < spawnCount; i++) {
             const x = 50;
