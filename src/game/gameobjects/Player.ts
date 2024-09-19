@@ -1,6 +1,6 @@
 import { Scene } from "phaser";
 import CursorKeys = Phaser.Types.Input.Keyboard.CursorKeys;
-import { ASSET_KEYS } from "../main.ts";
+// import { ASSET_KEYS } from "../main.ts";
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
     // private _id: `${string}-${string}-${string}-${string}-${string}`;

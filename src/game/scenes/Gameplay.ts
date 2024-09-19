@@ -170,7 +170,7 @@ export class Gameplay extends Phaser.Scene {
     }
 
     // Function to spawn a specified number of wieners
-    spawnWieners(count: number = 1) {
+    spawnWieners() {
         console.log("spawning wieners");
         const currentCount = this.wieners.getChildren().length | 1;
         console.log({ currentCount });
