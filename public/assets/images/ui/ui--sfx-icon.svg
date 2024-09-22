@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,0,-304)">
+        <g id="SFX-Icon" serif:id="SFX Icon" transform="matrix(1,0,0,1,0,304)">
+            <rect x="0" y="0" width="128" height="128" style="fill:none;"/>
+            <g transform="matrix(1,0,0,1,4,-296)">
+                <path d="M13,372C10.792,372 9,370.208 9,368C9,365.792 10.792,364 13,364L29.349,364L39.316,340.441C40.008,338.807 41.694,337.824 43.457,338.026C45.22,338.229 46.639,339.569 46.941,341.318L52.312,372.347L62.08,324.205C62.465,322.307 64.154,320.957 66.09,321.001C68.026,321.045 69.653,322.469 69.952,324.382L77.889,375.178L82.359,365.345C83.008,363.917 84.431,363 86,363L102,363C104.208,363 106,364.792 106,367C106,369.208 104.208,371 102,371L88.576,371L79.641,390.655C78.91,392.264 77.21,393.202 75.458,392.963C73.707,392.724 72.321,391.364 72.048,389.618L65.488,347.637L55.92,394.795C55.537,396.681 53.866,398.027 51.942,398C50.018,397.972 48.387,396.578 48.059,394.682L41.38,356.095L35.684,369.559C35.058,371.038 33.607,372 32,372L13,372Z"/>
+            </g>
+        </g>
+    </g>
+</svg>

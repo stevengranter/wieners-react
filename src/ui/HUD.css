@@ -1,0 +1,179 @@
+/* In-Game HUD styles */
+
+/*.pixelated {image-rendering: pixelated}*/
+
+#game-screen__banner-overlay {
+    /* position: absolute; */
+    width: 100%;
+    /* height: 100%; */
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center; /* This centers vertically */
+    justify-content: center; /* This centers horizontally */
+    /* border: 2px solid cyan; */
+    font-size: 20svw;
+    font-family: "Coiny", sans-serif;
+    color: var(--clr-purple);
+    transform: rotate(-5deg);
+    -webkit-text-stroke: 0.8svw black;
+}
+
+#hud-scene-stats {
+    right: 0;
+    top: 0;
+    width: 30%;
+    height: 30%;
+    margin-right: 5%;
+    margin-top: 5%;
+    position: absolute;
+    /* border: 2px solid cyan; */
+}
+
+#game-screen__ingame-overlay__hud {
+    position:absolute;
+    left:0;
+    top:0
+}
+
+#time-remaining {
+    text-align: right;
+    font-family: "Coiny", sans-serif;
+    font-size: 6svw;
+    line-height: 6svw;
+    opacity: 100%;
+    color: var(--clr-violet);
+    -webkit-text-stroke: 2px #fff;
+    /* text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff; */
+}
+
+.hud-left {
+    left: 0;
+    /*width: 30%;*/
+    margin-left: 10%;
+    margin-top: 10%;
+}
+
+.hud-right {
+    right: 0;
+}
+/* #scene-timer::before {
+  content: "⏱️";
+} */
+
+#hud-banner {
+    width: 100%;
+    height: 100%;
+    border: 1px solid magenta;
+    position: absolute;
+}
+#hud-player-stats {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* border: 1px solid magenta; */
+}
+
+#hud-lives div {
+    font-family: Coiny, sans-serif;
+    font-size: 3vw;
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
+    1px 1px 0 #fff;
+    line-height: 1.5vw;
+    top: 5%;
+    /* left: 3%; */
+    z-index: 6;
+    position: relative;
+    transform: translateY(-30px);
+}
+
+#hud-lives img {
+    width: 6vw;
+    height: auto;
+    z-index: 5;
+    display: block;
+    position: relative;
+    image-rendering:pixelated;
+    /* border: 1px solid magenta; */
+}
+
+#hud-health-meter {
+    /*height: 28px;*/
+    /*min-height: 10px;*/
+    /*width: 200px;*/
+    color: white;
+    background-color: black;
+    border-radius: 25px;
+    border: 2px solid #fff;
+    padding: 3px;
+    /* border: 1px solid magenta; */
+    vertical-align: middle;
+    z-index: 3;
+    left: 6vw;
+    /* top: 10%; */
+    right: 0%;
+    /* box-shadow: inset 0 -5px 5px rgba(255, 255, 255, 0.3); */
+}
+
+#hud-health-meter span {
+    display: block;
+    height: 100%;
+    min-height: 20px;
+    width: auto;
+    border-radius: 20px;
+    background-color: var(--clr-green);
+    /* box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.3),
+      inset 0 -2px 3px rgba(0, 0, 0, 0.4); */
+    position: relative;
+    z-index: 4;
+    overflow: hidden;
+    transition: background-color 0.6s, width 0.3s linear;
+}
+#hud-score-stats {
+    font-family: Coiny, sans-serif;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* vertical-align: middle; */
+}
+#score {
+    font-family: Coiny, sans-serif;
+    font-size: 3svw;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000,
+    2px 2px 0 #000;
+    color: var(--clr-gold);
+    display: block;
+    /* padding-top: 3%; */
+    /* line-height: 1vh; */
+    /* outline: 3px solid white; */
+    /* aborder: 1px solid magenta; */
+}
+
+#score-remaining {
+    font-family: Coiny, sans-serif;
+    font-size: 2svw;
+    margin-left: 10px;
+    align-self: center;
+    color: black;
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
+    1px 1px 0 #fff;
+}
+
+#hud-combo {
+    font-family: Coiny, sans-serif;
+    font-size: 3svw;
+    display: block;
+    height: fit-content;
+    width: fit-content;
+    line-height: 1rem;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+    margin: 2% 0;
+    padding: 0;
+    /* border: 1px solid magenta; */
+}
+
+#hud-combo span {
+    color: #ccc;
+    opacity: 50%;
+}

@@ -1,0 +1,104 @@
+:root {
+    --clr-pink: oklch(70.58% 0.2641 359.47);
+    --clr-red: #f03668;
+    --clr-orange: #ff775a;
+    --clr-gold: #fcd224;
+    --clr-green: #a0cc50;
+    --clr-sky-blue: #0ad1ea;
+    --clr-purple: #d379ff;
+    --clr-violet: #7b28a4;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #000000; 
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+
+.button {
+    width: 140px;
+    margin: 10px;
+    padding: 10px;
+    background-color: #000000;
+    color: rgba(255, 255, 255, 0.87);
+    border: 1px solid rgba(255, 255, 255, 0.87);
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+        border: 1px solid #0ec3c9;
+        color: #0ec3c9;
+    }
+
+    &:active {
+        background-color: #0ec3c9;
+    }
+
+    /* Disabled styles */
+    &:disabled {
+        cursor: not-allowed;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: rgba(255, 255, 255, 0.3);
+    }
+}
+
+#app {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    /*display: flex;*/
+    justify-content: center;
+    align-items: center;
+}
+#game-container {
+    position:absolute;
+    width:100%;
+}
+#game-container_overlay {
+    aspect-ratio: 16/9;
+    position:absolute;
+    background-color:transparent;
+    width: 100%;
+    height: auto;
+  
+    display:flex;
+    align-content:center;
+    overflow:hidden;
+    justify-content: center;
+}
+
+#nav-buttons {
+    display:flex;
+    justify-content: space-between;
+    width:100%
+}
+
+#debug-panel {
+    /*display:none;*/
+    position: absolute;
+    bottom: 10%;
+    width: 90%;
+    font-family: "American Typewriter","Courier New", Courier, serif;
+    border: 1px solid var(--clr-sky-blue);
+    color: var(--clr-sky-blue);
+    font-size:12px;
+   letter-spacing:1px;
+    margin: 10px;
+    padding: 10px;
+}
+
+footer{
+    position:absolute;
+    bottom:0;
+    width:100%
+}
+
+canvas {
+    image-rendering: pixelated;
+    width: 100% !important;
+}

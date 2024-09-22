@@ -1,0 +1,19 @@
+{
+    "characterPortraits": [
+        {
+            "key": "nanny",
+            "fullName": "Nanny",
+            "imgSrc": "/assets/images/characters/nan-portrait.webp"
+        },
+        {
+            "key": "tibbo",
+            "fullName": "Mr. Tibbo",
+            "imgSrc": "/assets/images/characters/tibbo-portrait.webp"
+        },
+        {
+            "key": "happy_chicken",
+            "fullName": "Mr. Chicken",
+            "imgSrc": "/assets/images/characters/happy-chicken-portrait.png"
+        }
+    ]
+}
