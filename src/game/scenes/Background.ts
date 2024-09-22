@@ -24,6 +24,7 @@ export class Background extends Phaser.Scene {
             .setScrollFactor(0)
             .setOrigin(0, 0)
             .setDisplaySize(this.scale.width, this.scale.height);
+        console.log("Background Scene");
     }
 
     update() {}

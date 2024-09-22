@@ -79,11 +79,11 @@ body {
 }
 
 #debug-panel {
-    display:none;
+    /*display:none;*/
     position: absolute;
     bottom: 10%;
     width: 90%;
-    font-family: "American Typewriter","Courier New",Courier;
+    font-family: "American Typewriter","Courier New", Courier, serif;
     border: 1px solid var(--clr-sky-blue);
     color: var(--clr-sky-blue);
     font-size:12px;

@@ -22,6 +22,8 @@ export class Level01 extends Scene {
             imageFileName: "bg_garden-layer-1.webp",
         });
 
+        this.scene.start("CharacterDialog");
+
         this.scene.start("Gameplay");
 
         this.scene.bringToTop("Foreground");

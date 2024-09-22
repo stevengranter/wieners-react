@@ -1,8 +1,15 @@
-import { forwardRef, useEffect, useLayoutEffect, useRef } from "react";
+import {
+    forwardRef,
+    useEffect,
+    useLayoutEffect,
+    useRef,
+    useContext,
+} from "react";
 import StartGame from "./main";
 import { EventBus } from "./EventBus";
 import UiOverlay from "../ui/UiOverlay.tsx";
 import DebugPanel from "../ui/DebugPanel.tsx";
+import { DebugContext } from "./debug/DebugContext.ts";
 
 export interface IRefPhaserGame {
     game: Phaser.Game | null;
@@ -16,7 +23,7 @@ interface IProps {
 export const PhaserGame = forwardRef<IRefPhaserGame, IProps>(
     function PhaserGame({ currentActiveScene }, ref) {
         const game = useRef<Phaser.Game | null>(null!);
-
+        const debug = useContext(DebugContext);
         useLayoutEffect(() => {
             if (game.current === null) {
                 game.current = StartGame("game-container");
@@ -31,9 +38,7 @@ export const PhaserGame = forwardRef<IRefPhaserGame, IProps>(
             return () => {
                 if (game.current) {
                     game.current.destroy(true);
-                    if (game.current !== null) {
-                        game.current = null;
-                    }
+                    game.current = null;
                 }
             };
         }, [ref]);
@@ -82,13 +87,22 @@ export const PhaserGame = forwardRef<IRefPhaserGame, IProps>(
             };
         }, [currentActiveScene, ref]);
 
+        useEffect(() => {
+            EventBus.on("debug-mode", (value: boolean) => {
+                console.log(`Event: debug-mode: ${value}`);
+            });
+            return () => {
+                EventBus.removeListener("player-score-update");
+            };
+        }, [currentActiveScene, ref]);
+
         return (
-            <>
-                <div id="game-container">
-                    <UiOverlay />
-                </div>
-                <DebugPanel game={game} />
-            </>
+            // <DebugContext.Provider value={debug}>
+            <div id="game-container">
+                <UiOverlay />
+            </div>
+            // {debug && <DebugPanel game={game} />}
+            // </DebugContext.Provider>
         );
     },
 );

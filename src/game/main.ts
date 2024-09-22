@@ -8,6 +8,8 @@ import { MainMenu } from "./scenes/MainMenu.ts";
 import { Background } from "./scenes/Background.ts";
 import { Foreground } from "./scenes/Foreground.ts";
 import { Gameplay } from "./scenes/Gameplay.ts";
+import { CharacterDialog } from "./scenes/CharacterDialog.ts";
+import { Debug } from "./scenes/Debug.ts";
 
 export const CANVAS = {
     WIDTH: 1280,
@@ -45,7 +47,10 @@ const config: Phaser.Types.Core.GameConfig = {
     scene: [
         Boot,
         Preloader,
+
         MainMenu,
+        Debug,
+        CharacterDialog,
         Level01,
         Background,
         Foreground,
