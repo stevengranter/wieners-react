@@ -14,7 +14,7 @@
     /* border: 2px solid cyan; */
     font-size: 20svw;
     font-family: "Coiny", sans-serif;
-    color: var(--clr-purple);
+    color: var(--color-purple-200);
     transform: rotate(-5deg);
     -webkit-text-stroke: 0.8svw black;
 }
@@ -42,7 +42,7 @@
     font-size: 6svw;
     line-height: 6svw;
     opacity: 100%;
-    color: var(--clr-violet);
+    color: var(--color-violet-300);
     -webkit-text-stroke: 2px #fff;
     /* text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff; */
 }
@@ -111,7 +111,7 @@
     z-index: 3;
     left: 6vw;
     /* top: 10%; */
-    right: 0%;
+    right: 0;
     /* box-shadow: inset 0 -5px 5px rgba(255, 255, 255, 0.3); */
 }
 
@@ -121,7 +121,7 @@
     min-height: 20px;
     width: auto;
     border-radius: 20px;
-    background-color: var(--clr-green);
+    background-color: var(--animate-bounce);
     /* box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.3),
       inset 0 -2px 3px rgba(0, 0, 0, 0.4); */
     position: relative;
@@ -141,7 +141,7 @@
     font-size: 3svw;
     text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000,
     2px 2px 0 #000;
-    color: var(--clr-gold);
+    color: var(--color-yellow-300);
     display: block;
     /* padding-top: 3%; */
     /* line-height: 1vh; */
