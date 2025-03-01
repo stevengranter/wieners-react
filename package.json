@@ -1,5 +1,5 @@
 {
-  "name": "wfh-party",
+  "name": "wieners-react",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,8 +12,6 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@storybook/experimental-addon-test": "^8.6.3",
-    "@typescript-eslint/parser": "^8.25.0",
     "express": "^4.21.2",
     "phaser": "^3.88.2",
     "phaser-react-ui": "^1.16.0",
@@ -24,11 +22,13 @@
     "vite-express": "^0.20.0"
   },
   "devDependencies": {
+    "@typescript-eslint/parser": "^8.25.0",
     "@chromatic-com/storybook": "^3.2.5",
     "@eslint/js": "^9.21.0",
     "@storybook/addon-essentials": "^8.6.3",
     "@storybook/addon-interactions": "^8.6.3",
-    "@storybook/addon-onboarding": "^8.6.3",
+    "@storybook/addon-onboarding": "^8.6.3", 
+    "@storybook/experimental-addon-test": "^8.6.3", 
     "@storybook/blocks": "^8.6.3",
     "@storybook/react": "^8.6.3",
     "@storybook/react-vite": "^8.6.3",
