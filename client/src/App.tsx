@@ -32,14 +32,13 @@ function App() {
             <PhaserGame ref={phaserRef} currentActiveScene={currentScene} />
             <footer>
                 <div id='nav-buttons'>
-                    <Button className='Button' onClick={changeScene}>
-                        Previous Scene
+                    <Button className='Button' variant="secondary" onClick={changeScene}>Previous Scene
                     </Button>
                     <Button className='Button' onClick={changeScene}>
                         Next Scene
                     </Button>
                 </div>
-            </footer>
+            </footer> 
         </div>
     )
 }

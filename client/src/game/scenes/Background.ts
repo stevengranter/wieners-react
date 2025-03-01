@@ -1,7 +1,7 @@
 import Phaser from "phaser";
 
 export class Background extends Phaser.Scene {
-    private imageFileName: string;
+    private imageFileName!: string;
     constructor() {
         super({ key: "Background" });
     }

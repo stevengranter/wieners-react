@@ -4,17 +4,14 @@ import { Game as MainGame } from "./scenes/Game";
 import { Level01 } from "./scenes/Level01";
 import { AUTO, Game } from "phaser";
 import { Preloader } from "./scenes/Preloader";
-import { MainMenu } from "./scenes/MainMenu.ts";
-import { Background } from "./scenes/Background.ts";
-import { Foreground } from "./scenes/Foreground.ts";
-import { Gameplay } from "./scenes/Gameplay.ts";
-import { CharacterDialog } from "./scenes/CharacterDialog.ts";
-import { Debug } from "./scenes/Debug.ts";
+import { MainMenu } from "./scenes/MainMenu";
+import { Background } from "./scenes/Background";
+import { Foreground } from "./scenes/Foreground";
+import { Gameplay } from "./scenes/Gameplay";
+import { CharacterDialog } from "./scenes/CharacterDialog";
+import { Debug } from "./scenes/Debug";
 
-export const CANVAS = {
-    WIDTH: 1280,
-    HEIGHT: 720,
-};
+import {CANVAS} from "../../../shared/constants";
 
 export enum ASSET_KEYS {
     NANNY = "nanny",
@@ -31,12 +28,14 @@ export enum ASSET_KEYS {
 //  https://newdocs.phaser.io/docs/3.70.0/Phaser.Types.Core.GameConfig
 const config: Phaser.Types.Core.GameConfig = {
     type: AUTO,
-    width: CANVAS.WIDTH,
-    height: CANVAS.HEIGHT,
-    antialiasGL: false,
-    antialias: false,
-    parent: "game-container",
     backgroundColor: "#0ad1ea",
+    scale: {
+        mode: Phaser.Scale.FIT,
+        parent: 'game-container',
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+        width: CANVAS.WIDTH,
+        height: CANVAS.HEIGHT
+    },
     physics: {
         default: "arcade",
         arcade: {
@@ -47,7 +46,6 @@ const config: Phaser.Types.Core.GameConfig = {
     scene: [
         Boot,
         Preloader,
-
         MainMenu,
         Debug,
         CharacterDialog,

@@ -13,7 +13,7 @@ export class MainMenu extends Scene {
     preload() {}
 
     create() {
-        this.background = this.add.image(512, 384, "background");
+        // this.background = this.add.image(this.scale.width/2, this.scale.height/2, "background");
 
         const posCanvasCenter = {
             x: this.scale.width / 2,
@@ -26,7 +26,7 @@ export class MainMenu extends Scene {
             "logo",
         );
         // .setDepth(100);
-        this.logo.setScale(0.5);
+        this.logo.setScale(100);
 
         EventBus.emit("current-scene-ready", this);
     }
