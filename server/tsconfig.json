@@ -1,8 +1,8 @@
 {
     "extends": "../tsconfig.json",
     "compilerOptions": {
-        "module": "ESNext",
-        "moduleResolution": "Bundler",
+        "module": "Node16",
+        "moduleResolution": "node16",
         "jsx": "react-jsx",
         "noEmit": false
     },

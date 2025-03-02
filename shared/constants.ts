@@ -1,3 +1,4 @@
-const CANVAS = {WIDTH: 720, HEIGHT: 480 };
+const CANVAS_WIDTH = 720;
+const CANVAS_HEIGHT = 480;
 
-export {CANVAS}
+export { CANVAS_WIDTH, CANVAS_HEIGHT };

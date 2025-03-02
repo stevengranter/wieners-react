@@ -4,14 +4,8 @@
     "module": "ES2022",
     "moduleResolution": "bundler",
     "jsx": "react-jsx",
-    //    "allowImportingTsExtensions": true,
     "forceConsistentCasingInFileNames": true
-    //    "baseUrl": ".",
-    //    "paths": {
-    //      "*": [
-    //        "src/*"
-    //      ]
-    //    }
+
   },
   "experimental": {
     "classRegex": ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]

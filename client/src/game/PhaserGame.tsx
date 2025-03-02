@@ -1,14 +1,6 @@
-import {
-    forwardRef,
-    useEffect,
-    useLayoutEffect,
-    useRef,
-    useContext,
-} from "react";
+import { forwardRef, useEffect, useLayoutEffect, useRef } from "react";
 import StartGame from "./main";
 import { EventBus } from "./EventBus";
-import UiOverlay from "../ui/UiOverlay.tsx";
-import { DebugContext } from "./debug/DebugContext.ts";
 
 export interface IRefPhaserGame {
     game: Phaser.Game | null;
@@ -22,11 +14,9 @@ interface IProps {
 export const PhaserGame = forwardRef<IRefPhaserGame, IProps>(
     function PhaserGame({ currentActiveScene }, ref) {
         const game = useRef<Phaser.Game | null>(null!);
-        const debug = useContext(DebugContext);
         useLayoutEffect(() => {
             if (game.current === null) {
                 game.current = StartGame("game-container");
-
                 if (typeof ref === "function") {
                     ref({ game: game.current, scene: null });
                 } else if (ref) {
@@ -39,6 +29,15 @@ export const PhaserGame = forwardRef<IRefPhaserGame, IProps>(
                     game.current.destroy(true);
                     game.current = null;
                 }
+            };
+        }, [ref]);
+
+        useEffect(() => {
+            EventBus.on("socket-ready", () => {
+                console.log("socket ready");
+            });
+            return () => {
+                EventBus.removeListener("socket-ready");
             };
         }, [ref]);
 
@@ -67,39 +66,37 @@ export const PhaserGame = forwardRef<IRefPhaserGame, IProps>(
                 EventBus.removeListener("current-scene-ready");
             };
         }, [currentActiveScene, ref]);
-
-        useEffect(() => {
-            EventBus.on("player-health-update", (value: integer) => {
-                console.log(`Event: player-health-update: ${value}`);
-            });
-            return () => {
-                EventBus.removeListener("player-health-update");
-            };
-        }, [currentActiveScene, ref]);
-
-        useEffect(() => {
-            EventBus.on("player-score-update", (value: integer) => {
-                console.log(`Event: player-score-update: ${value}`);
-            });
-            return () => {
-                EventBus.removeListener("player-score-update");
-            };
-        }, [currentActiveScene, ref]);
-
-        useEffect(() => {
-            EventBus.on("debug-mode", (value: boolean) => {
-                console.log(`Event: debug-mode: ${value}`);
-            });
-            return () => {
-                EventBus.removeListener("player-score-update");
-            };
-        }, [currentActiveScene, ref]);
+        //
+        // useEffect(() => {
+        //     EventBus.on("player-health-update", (value: integer) => {
+        //         console.log(`Event: player-health-update: ${value}`);
+        //     });
+        //     return () => {
+        //         EventBus.removeListener("player-health-update");
+        //     };
+        // }, [currentActiveScene, ref]);
+        //
+        // useEffect(() => {
+        //     EventBus.on("player-score-update", (value: integer) => {
+        //         console.log(`Event: player-score-update: ${value}`);
+        //     });
+        //     return () => {
+        //         EventBus.removeListener("player-score-update");
+        //     };
+        // }, [currentActiveScene, ref]);
+        //
+        // useEffect(() => {
+        //     EventBus.on("debug-mode", (value: boolean) => {
+        //         console.log(`Event: debug-mode: ${value}`);
+        //     });
+        //     return () => {
+        //         EventBus.removeListener("player-score-update");
+        //     };
+        // }, [currentActiveScene, ref]);
 
         return (
             // <DebugContext.Provider value={debug}>
-            <div id="game-container">
-                <UiOverlay />
-            </div>
+            <div id="game-container"></div>
             // {debug && <DebugPanel game={game} />}
             // </DebugContext.Provider>
         );

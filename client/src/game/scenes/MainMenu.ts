@@ -1,6 +1,7 @@
 import { GameObjects, Scene } from "phaser";
 
 import { EventBus } from "../EventBus";
+import Client from "../../client";
 
 export class MainMenu extends Scene {
     background: GameObjects.Image;
@@ -26,7 +27,11 @@ export class MainMenu extends Scene {
             "logo",
         );
         // .setDepth(100);
-        this.logo.setScale(100);
+        this.logo.setScale(0.35);
+        if (Client.socket) {
+            Client.socket.connect();
+            EventBus.emit("socket-ready");
+        }
 
         EventBus.emit("current-scene-ready", this);
     }
